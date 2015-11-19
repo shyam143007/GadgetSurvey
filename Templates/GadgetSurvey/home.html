@@ -1,0 +1,101 @@
+{% extends "GadgetSurvey/base.html" %}
+
+
+{% block html_body %}
+
+<div class=" col-sm-10 col-sm-push-1 well" style="margin-top:20px;" >
+    <h1 class="col-sm-4 col-sm-push-4" style="font-weight:bold; font-style:italic ;font-family:timesnewroman;color:#eb9500">Gadget Survey</h1>
+    </br></br></br></br>
+    <p style='color:red'><span>* All fields are mandatory</span></p>
+    <form method='post'>
+        {% csrf_token %}
+            <b>Current using mobile :</b> <input type="text" name='currentMobile' id='currentMobile' class="form-control">
+            </br>
+            <b>Current using laptop/pc :</b> <input type="text" name='currentLaptop' id='currentLaptop' class="form-control">
+            </br>
+            <b>Which products you like ?</b>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="radio-inline"><input type="radio" value="0" name="optradio">Windows</label>
+            <label class="radio-inline"><input type="radio" value="1" name="optradio">Mac</label>
+            <label class="radio-inline"><input type="radio" value="2" name="optradio">Android</label>
+            </br>
+            </br>
+            <b>Why :</b> <textarea class="form-control" style="resize:none" name="currentWhy" id="currentWhy" rows="4"></textarea>
+            </br>
+            <b>What would be your next mobile/laptop/pc ?</b>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="radio-inline"><input type="radio" value="0" name="future_optradio">Windows</label>
+            <label class="radio-inline"><input type="radio" value="1" name="future_optradio">Mac</label>
+            <label class="radio-inline"><input type="radio" value="2" name="future_optradio">Android</label>
+            </br>
+            </br>
+            <b>Why :</b> <textarea class="form-control" style="resize:none" name="futureWhy" id="futureWhy"rows="4"></textarea>
+            </br>
+            <button class="btn btn-large btn-primary" style="font-size:20px" id='btnSubmit'>Submit</button>
+        </form>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $('#btnSubmit').on('click', function()
+            {
+                var result = true;
+                var currentMobile, currentLaptop, optradio, currentWhy, future_optradio, futureWhy;
+                currentMobile = $('#currentMobile').val();
+                currentLaptop = $('#currentLaptop').val();
+                optradio = $('[name="optradio"]:checked').val();
+                currentWhy = $('#currentWhy').text();
+                future_optradio = $('[name="future_optradio"]:checked').val();
+                futureWhy = $('#futureWhy').text();
+
+
+                if(currentMobile === '')
+                {
+                    $('#currentMobile').focus();
+                    return result = false;
+                }
+                if(currentLaptop === '')
+                {
+                    $('#currentLaptop').focus();
+                    return result = false;
+                }
+                if(optradio === 'undefined')
+                {
+                    $('[name="optradio"]').focus();
+                    return result = false;
+                }
+                if(currentWhy === '')
+                {
+                    $('#currentWhy').focus();
+                    return result = false;
+                }
+                if(future_optradio === 'undefined')
+                {
+                    $('[name="future_optradio"]').focus();
+                    return result = false;
+                }
+                if(futureWhy === '')
+                {
+                    $('#futureWhy').focus();
+                    return result = false;
+                }
+                return result;
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block internal_css %}
+    <style type="text/css">
+        input,textarea
+        {
+            font: 15px "Times New Roman", Times, serif;
+        }
+    </style>
+{% endblock %}

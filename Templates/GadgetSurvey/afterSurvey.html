@@ -1,0 +1,14 @@
+{% extends "GadgetSurvey/base.html" %}
+
+{% block html_body %}
+
+<div  style="margin-top:20px;" >
+    {% if survey == '1' %}
+        <h1 class=" col-sm-6 col-sm-push-3" style="color:white">You have already submitted the survey.</h1>
+    {% elif survey == '2' %}
+        <h1 class=" col-sm-6 col-sm-push-3" style="color:white">Thanks for joining the survey. Have a nice day.</h1>
+    {% endif %}
+    <img src="{{ STATIC_URL }}GadgetSurvey/Images/smiley-hi.gif" style="width:500px;height:500px"/>
+</div>
+
+{% endblock %}

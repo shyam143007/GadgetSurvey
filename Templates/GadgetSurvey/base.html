@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+
+    <meta charset="UTF-8">
+    <title>Gadget Survey</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    {% block javascript %}
+    {% endblock %}
+    {% block internal_css %}
+    {% endblock %}
+</head>
+<body style="background-color:#eb9500;font-family:gabriola;font-size:20px">
+{% block html_body %}
+{% endblock %}
+</body>
+</html>
